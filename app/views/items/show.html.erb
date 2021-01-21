@@ -1,0 +1,10 @@
+<%= attachment_image_tag @item, :image %>
+<%= @item.name %>
+<%= @item.introduction %>
+<%= @item.price %>
+<%= form_with url: '/cart_items', model: @cart_item, local: true do |f| %>
+  <%= f.number_field :amount %>
+　<%= f.hidden_field :item_id, :value => @item.id %>
+　<%= f.hidden_field :customer_id, :value => @customer.id %>
+　<%= f.submit %>
+<% end %>
