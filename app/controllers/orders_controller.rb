@@ -6,6 +6,9 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @order = Order.new
+    @customer = current_customer
+    p @order
   end
 
   def create
@@ -16,6 +19,5 @@ class OrdersController < ApplicationController
 
   def comfirm
   end
-
 
 end
