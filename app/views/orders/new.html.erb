@@ -1,5 +1,5 @@
 <h1>注文情報入力</h1>
-<%= form_with model: @order, local: true do |f| %>
+<%= form_with url: "/orders/confirm", model: @order, local: true do |f| %>
 <h2>支払い方法</h2>
   <%= f.radio_button :payment_method, 0 %>
   <%= f.label :payment_method, "クレジットカード" %>
@@ -7,17 +7,20 @@
   <%= f.label :payment_method, "銀行振込" %>
 <h2>お届け先</h2>
   <%= f.radio_button :order_select, 0 %>
-  <%= f.label :shipping_address, "ご自身の住所" %>
+  <%= f.label :order_select, "ご自身の住所" %>
 <p>〒<%= @customer.postal_code %>　<%= @customer.address %></p>
 <p><%= @customer.first_name %><%= @customer.last_name %></p>
 
   <%= f.radio_button :order_select, 1 %>
-  <%= f.label :shipping_address, "新しいお届け先" %>
+  <%= f.label :order_select, "登録先の住所から選択" %>
 
 
   <%= f.radio_button :order_select, 2 %>
-  <%= f.label :shipping_address, "新しいお届け先" %>
+  <%= f.label :order_select, "新しいお届け先" %>
+  <%= f.text_field :shipping_postal_code_2 %>
+  <%= f.text_field :shipping_address_2 %>
+  <%= f.text_field :shipping_name_2 %>
 
 
-<%= f.submit "確定" %>
+<%= f.submit "確認画面へ進む" %>
 <% end %>
