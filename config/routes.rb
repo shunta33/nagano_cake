@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
+
+  get 'customers/my_page' => 'customers#show'
+  patch 'customers' => 'customers#update'
+  get 'customers/unsubscribe' => 'customers#unsubscribe'
+  patch 'customers/withdraw' => 'customers#withdraw'
   get 'cart_items' => 'cart_items#index'
   patch 'cart_items/:id' => 'cart_items#update' , as: 'cart_item'
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'cart_items_destroy_all'
