@@ -1,5 +1,27 @@
-<h1>Homes#top</h1>
-<p>ようこそ、ながのCAKEへ！</p>
-<p>このサイトは、ケーキ販売のECサイトになります。</p>
-<p>会員でもない方も商品の閲覧はできますが、</p>
-<p>購入には会員登録が必要になります。</p>
+<div class="container">
+  <div class="row" style="background-color: orange;">
+    <div class="mx-auto">
+      <div class="col-lg-12 mt-3" style="background-color: red;">
+        <p>ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でもない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。</p>
+      </div>
+    </div>
+  </div>
+  <h1>新着商品</h1>
+  <div class="flex">
+    <% @items.each do |item| %>
+    <div class="item_box">
+      <div class="item_image">
+        <%= attachment_image_tag item, :image %>
+      </div>
+      <div class="item_info">
+        <%= link_to item.name, item_path(item.id) %>
+        <div>￥<%= item.price.to_s(:delimited) %></div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+</div>

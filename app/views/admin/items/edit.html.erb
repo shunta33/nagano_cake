@@ -1,5 +1,5 @@
 <h1>商品編集</h1>
-<%= form_with url: "/admin/items", model:@item, local:true do |f| %>
+<%= form_with url: admin_item_path(@item.id), model:@item, local:true do |f| %>
 
 
   <h4>商品画像</h4>

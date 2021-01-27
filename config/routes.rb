@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items, only: [:index, :new, :edit, :show, :create, :update, :delete]
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :destroy]
   end
 
   devise_for :admin, controllers: {
