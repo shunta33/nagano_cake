@@ -1,10 +1,20 @@
-<%= attachment_image_tag @item, :image %>
-<%= @item.name %>
-<%= @item.introduction %>
-<%= @item.price %>
-<%= form_with url: '/cart_items', model: @cart_item, local: true do |f| %>
-  <%= f.number_field :amount %>
-　<%= f.hidden_field :item_id, :value => @item.id %>
-　<%= f.hidden_field :customer_id, :value => @customer.id %>
-　<%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row mt-5 justify-content-center">
+    <div class="col-lg-4">
+      <%= attachment_image_tag @item, :image, size: "250x250" %>
+    </div>
+    <div class="col-lg-5 mt-5">
+      <h3><%= @item.name %></h3>
+        <p><%= @item.introduction %></p>
+        <div class="mt-5"><h5>￥<%= @item.price %>（税込）</h5></div>
+        <%= form_with url: '/cart_items', model: @cart_item, local: true do |f| %>
+          <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]], include_blank: "選択して下さい" %>
+        　<%= f.hidden_field :item_id, :value => @item.id %>
+        　<%= f.hidden_field :customer_id, :value => @customer.id %>
+        　<%= f.submit "カートに入れる" %>
+        <% end %>
+    </div>
+
+
+  </div>
+</div>

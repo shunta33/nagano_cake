@@ -9,12 +9,14 @@ class OrdersController < ApplicationController
   end
 
   def new
+    @true = true
     @order = Order.new
     @customer = current_customer
   end
 
   def create
     @order = Order.new(order_params)
+    p @order
     @order_items = current_customer.cart_items
     p @order
     @order.save
@@ -41,6 +43,12 @@ class OrdersController < ApplicationController
     @customer = current_customer
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
+
+    if @order.order_select == 2
+      if @order.shipping_postal_code_2.blank? or @order.shipping_address_2.blank? or @order.shipping_name_2.blank?
+        render :new
+      end
+    end
 
     if @order.order_select == 0
       @order.shipping_postal_code = current_customer.postal_code

@@ -1,37 +1,47 @@
-<h1>マイページ</h1>
-<h2>登録情報 <%= link_to "編集する", edit_customer_registration_path %></h2>
-<table>
-  <tr>
-    <td>氏名</td>
-    <td><%= @customer.first_name %><%= @customer.last_name %></td>
-  </tr>
-  <tr>
-    <td>カナ</td>
-    <td><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td>
-  </tr>
-  <tr>
-    <td>郵便番号</td>
-    <td><%= @customer.postal_code %></td>
-  </tr>
-  <tr>
-    <td>住所</td>
-    <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-    <td>電話番号</td>
-    <td><%= @customer.telephone_number %></td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
-  </tr>
-
-
-
-</table>
-
-
-<h2>配送先 <%= link_to "一覧を見る", addresses_path %></h2>
-
-
-<h2>注文履歴 <%= link_to "一覧を見る", orders_path %></h2>
+<div class="container">
+  <div class="row mt-3">
+    <h3 class="col-lg-3 offset-lg-1">マイページ</h3>
+  </div>
+  <div class="row mt-4">
+      <h5 class="col-lg-2 offset-lg-1">登録情報</h5>
+      <div class="col-lg-2"><%= link_to "編集する", edit_customer_registration_path %></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <table class="table table-bordered">
+        <tr>
+          <td class="table-secondary">氏名</td>
+          <td><%= @customer.first_name %><%= @customer.last_name %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">カナ</td>
+          <td><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">郵便番号</td>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">住所</td>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">電話番号</td>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!--<div class="row mt-3">-->
+  <!--    <h5 class="col-lg-2 offset-lg-1">配送先</h5>-->
+  <!--    <div class="col-lg-2"><%= link_to "一覧を見る", addresses_path %></div>-->
+  <!--</div>-->
+  <div class="row mt-3">
+      <h5 class="col-lg-2 offset-lg-1">注文履歴</h5>
+      <div class="col-lg-2"><%= link_to "一覧を見る", orders_path %></div>
+  </div>
+</div>
