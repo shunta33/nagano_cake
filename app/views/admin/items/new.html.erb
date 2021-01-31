@@ -1,20 +1,49 @@
-<h1>商品新規登録</h1>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-4 offset-1">
+    <h3>商品新規登録</h3>
+    </div>
+  </div>
 
-<%= form_with url: "/admin/items", model:@item, local:true do |f| %>
+      <%= form_with url: "/admin/items", model:@item, local:true do |f| %>
+  <div class="row mt-3">
+    <div class="col-lg-2 offset-2">
+      商品画像
+    </div>
+    <div class="col-lg-5">
+      <%= f.attachment_field :image %>
+    </div>
+  </div>
+  <div class="row mt-1">
+    <div class="col-lg-2 offset-2">
+        商品名
+    </div>
+    <div class="col-lg-5">
+        <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="row mt-1">
+    <div class="col-lg-2 offset-2">
+        商品説明
+    </div>
+    <div class="col-lg-5">
+        <%= f.text_area :introduction %>
+    </div>
+  </div>
+  <div class="row mt-1">
+    <div class="col-lg-2 offset-2">
+        税抜価格
+    </div>
+    <div class="col-lg-5">
+        <%= f.number_field :price %>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-lg-2 offset-4">
+      <%= f.submit '新規登録' %>
+    </div>
+  </div>
 
+      <% end %>
 
-  <h4>商品画像</h4>
-  <%= f.attachment_field :image %>
-
-  <h4>商品名</h4>
-  <%= f.text_field :name %>
-
-  <h4>商品説明</h4>
-  <%= f.text_area :introduction %>
-
-  <h4>税抜価格</h4>
-  <%= f.number_field :price %>
-
-  <%= f.submit '新規登録' %>
-
-<% end %>
+</div>

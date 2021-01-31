@@ -1,6 +1,37 @@
-<h1>商品詳細</h1>
-<%= attachment_image_tag @item, :image %>
-<p>商品名　　<%= @item.name %></p>
-<p>商品説明　<%= @item.introduction %></p>
-<p>税抜価格  <%= @item.price %>円</p>
-<%= link_to "編集する", edit_admin_item_path %>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-2 offset-1">
+      <h3>商品詳細</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 offset-1">
+      <%= attachment_image_tag @item, :image %>
+    </div>
+    <div class="col-lg-6 offset-1 mt-5">
+      <div class="row mt-2">
+        <div class="col-lg-2">商品名</div>
+        <div class="col-lg-9 offset-1">
+          <%= @item.name %>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-lg-2">商品説明</div>
+        <div class="col-lg-9 offset-1">
+          <%= @item.introduction %>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-lg-2">税込価格</div>
+        <div class="col-lg-9 offset-1">
+          <%= @item.price %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class=" col-lg-2 offset-5">
+    <%= link_to "編集する", edit_admin_item_path %>
+  </div>
+</div>
