@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
 
   get 'orders/new' => 'orders#new'
-  get 'orders/:id' => 'orders#show'
+  get 'orders/:id' => 'orders#show', as: 'order'
   get 'orders' => 'orders#index'
   post 'orders/confirm' => 'orders#confirm'
   post 'orders' => 'orders#create'
