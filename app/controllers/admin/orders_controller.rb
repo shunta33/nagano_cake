@@ -4,6 +4,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
+    @order = OrderItem.find(params[:id])
   end
 
   def destroy
