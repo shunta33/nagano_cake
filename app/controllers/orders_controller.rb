@@ -25,11 +25,13 @@ class OrdersController < ApplicationController
       @order_item = OrderItem.new
       @order_item.quantity = order_item.amount
       @order_item.item_id = order_item.item_id
-      @order_item.purchase_price = order_item.item.price
+      @order_item.purchase_price = order_item.item.price*1.1
       @order_item.order_id = @order.id
       @order_item.save
     end
-    redirect_to orders_complete_path
+    @cart_items = current_customer.cart_items.all
+    @cart_items.delete_all
+    render action: :complete
   end
 
   def complete

@@ -3,7 +3,7 @@
     <div class="col-lg-2"></div>
     <h3 class="col-lg-4 pl-4">ショッピングカート</h3>
       <div class="col-lg-2 offset-4 pt-2">
-        <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete %>
+        <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, :class=>"btn btn-danger" %>
       </div>
   </div>
   <div class="row mt-3">
@@ -29,12 +29,12 @@
           <td>
             <%= form_with model: cart_item, method: :patch, local:true do |f| %>
             <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]], include_blank: "選択して下さい" %>
-            <%= f.submit '変更' %>
+            <%= f.submit '変更', :class=>"btn btn-success" %>
             <% end %>
 
           </td>
           <td><%= (cart_item.item.price*1.1*cart_item.amount).floor(0) %></td>
-          <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %></td>
+          <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, :class=>"btn btn-danger" %></td>
           </tr>
           <% @sum += cart_item.item.price*1.1*cart_item.amount %>
           <% end %>
@@ -42,7 +42,9 @@
       </div>
   </div>
       <div class="row">
-        <div class="col-lg-8"></div>
+        <div class="col-lg-5 offset-3">
+          <%= link_to "買い物を続ける", root_path, :class=>"btn btn-primary" %>
+        </div>
         <div class="col-lg-4">
           <table class="table table-bordered">
             <tr>
@@ -55,7 +57,7 @@
       <div class="row">
         <div class="col-lg-6"></div>
         <div class="col-lg-2">
-          <%= link_to "情報入力に進む", orders_new_path %>
+          <%= link_to "情報入力に進む", orders_new_path, :class=>"btn btn-success" %>
         </div>
         <div class="col-lg-4"></div>
       </div>

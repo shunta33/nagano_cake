@@ -13,10 +13,10 @@
   </div>
   <div class="row mt-4">
     <div class="col-lg-2 offset-4 text-right">
-      <%= link_to "退会しない", :back %>
+      <%= link_to "退会しない", :back, :class=>"btn btn-primary" %>
     </div>
     <div class="col-lg-2">
-      <%= link_to "退会する", customers_withdraw_path, method: :patch %>
+      <%= link_to "退会する", customers_withdraw_path, method: :patch, :class=>"btn btn-danger" %>
     </div>
   </div>
 </div>

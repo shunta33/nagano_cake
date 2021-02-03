@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="row mt-2">
-        <div class="col-lg-3">税込価格</div>
+        <div class="col-lg-3">税抜価格</div>
         <div class="col-lg-9">
           <%= @item.price %>
         </div>
@@ -32,6 +32,6 @@
 </div>
 <div class="row">
   <div class=" col-lg-2 offset-5">
-    <%= link_to "編集する", edit_admin_item_path %>
+    <%= link_to "編集する", edit_admin_item_path, :class=>"btn btn-success" %>
   </div>
 </div>

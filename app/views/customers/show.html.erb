@@ -4,7 +4,7 @@
   </div>
   <div class="row mt-4">
       <h5 class="col-lg-2 offset-lg-1">登録情報</h5>
-      <div class="col-lg-2"><%= link_to "編集する", edit_customer_registration_path %></div>
+      <div class="col-lg-2 mb-2"><%= link_to "編集する", edit_customer_registration_path, :class=>"btn btn-success" %></div>
   </div>
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
@@ -42,6 +42,6 @@
   <!--</div>-->
   <div class="row mt-3">
       <h5 class="col-lg-2 offset-lg-1">注文履歴</h5>
-      <div class="col-lg-2"><%= link_to "一覧を見る", orders_path %></div>
+      <div class="col-lg-2"><%= link_to "一覧を見る", orders_path, :class=>"btn btn-primary" %></div>
   </div>
 </div>

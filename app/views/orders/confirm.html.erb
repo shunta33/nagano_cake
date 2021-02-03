@@ -17,11 +17,11 @@
         <% @cart_items.each do |cart_item| %>
         　<tr>
             <td><%= attachment_image_tag cart_item.item, :image, size: "40x30" %><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.price %></td>
+            <td><%= (cart_item.item.price*1.1).floor(0) %></td>
             <td><%= cart_item.amount %></td>
-            <td><%= cart_item.item.price*cart_item.amount %></td>
+            <td><%= (cart_item.item.price*1.1*cart_item.amount).floor(0) %></td>
           </tr>
-          <% @sum += cart_item.item.price*cart_item.amount %>
+          <% @sum += cart_item.item.price*1.1*cart_item.amount %>
         <% end %>
       </table>
     </div>
@@ -33,11 +33,11 @@
         </tr>
         <tr>
           <td>商品合計</td>
-          <td><%= @sum %></td>
+          <td><%= (@sum).floor(0) %></td>
         </tr>
         <tr>
           <td>請求金額</td>
-          <td><%= @sum + @order.shipping_fee %></td>
+          <td><%= (@sum + @order.shipping_fee).floor(0) %></td>
         </tr>
       </table>
     </div>
@@ -47,7 +47,7 @@
       支払方法
     </div>
     <div class="col-lg-3">
-      <%= @order.payment_method %>
+      <%= @order.payment_method_i18n %>
     </div>
   </div>
   <div class="row mt-3">
@@ -60,7 +60,7 @@
     </div>
   </div>
 
-<%= form_with url: "/orders", model: @order, local: true do |f| %>
+<%= form_with model: @order, local: true do |f| %>
 <%= f.hidden_field :customer_id, :value => @customer.id %>
 <%= f.hidden_field :billing_amount, :value => @sum + @order.shipping_fee %>
 <%= f.hidden_field :shipping_address, :value => @order.shipping_address %>
@@ -70,7 +70,7 @@
 <%= f.hidden_field :payment_method, :value => @order.payment_method %>
 <div class="row mt-3">
   <div class="col-lg-2 offset-5">
-    <%= f.submit "注文を確定する" %>
+    <%= f.submit "注文を確定する", :class=>"btn btn-success" %>
   </div>
 </div>
 
