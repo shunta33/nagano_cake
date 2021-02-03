@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @orders = Order.all
+    @orders = Order.where(customer_id: current_customer.id)
     @items = OrderItem.all
   end
 
