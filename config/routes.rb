@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
 
   get 'customers/my_page' => 'customers#show'
-  patch 'customers' => 'customers#update'
   get 'customers/unsubscribe' => 'customers#unsubscribe'
   patch 'customers/withdraw' => 'customers#withdraw'
   get 'cart_items' => 'cart_items#index'

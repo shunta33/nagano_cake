@@ -1,32 +1,29 @@
 class OrdersController < ApplicationController
+
+  before_action :authenticate_customer!
+
   def index
     @orders = Order.all
     @items = OrderItem.all
-    p @items
   end
 
   def show
     @order = Order.find(params[:id])
     @order_item = OrderItem.where(order_id: @order.id)
-    p @order_item
   end
 
   def new
-    @true = true
     @order = Order.new
     @customer = current_customer
   end
 
   def create
     @order = Order.new(order_params)
-    p @order
     @order_items = current_customer.cart_items
-    p @order
     @order.save
     @order_items.each do |order_item|
       @order_item = OrderItem.new
       @order_item.quantity = order_item.amount
-      p order_item.item_id
       @order_item.item_id = order_item.item_id
       @order_item.purchase_price = order_item.item.price
       @order_item.order_id = @order.id
@@ -37,9 +34,7 @@ class OrdersController < ApplicationController
 
   def complete
     @order = Order.all
-    p @order
     @order_item = OrderItem.all
-    p @order_item
   end
 
   def confirm
@@ -63,7 +58,6 @@ class OrdersController < ApplicationController
       @order.shipping_address = @order.shipping_address_2
       @order.shipping_name = @order.shipping_name_2
     end
-    p @order
   end
 
   private
